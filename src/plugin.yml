@@ -1,0 +1,5 @@
+name: CustomHeadsCommand
+version: 1.0.0
+author: MetalTurtle
+main: com.metalturtle.customheadscommand.CustomHeadsCommand
+api-version: 1.16

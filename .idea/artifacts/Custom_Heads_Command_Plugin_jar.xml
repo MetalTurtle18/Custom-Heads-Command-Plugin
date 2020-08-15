@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Custom-Heads-Command-Plugin:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Custom_Heads_Command_Plugin_jar</output-path>
+    <root id="archive" name="Custom-Heads-Command-Plugin.jar">
+      <element id="module-output" name="Custom-Heads-Command-Plugin" />
+      <element id="extracted-dir" path="$USER_HOME$/Development/SpigotPluginDevDependencies/spigot-api-1.16.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
