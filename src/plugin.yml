@@ -3,3 +3,8 @@ version: 1.0.0
 author: MetalTurtle
 main: com.metalturtle.customheadscommand.CustomHeadsCommand
 api-version: 1.16
+commands:
+  customhead:
+    description: A command to get a custom player head at the cost of the configured payment
+    usage: /<command>
+    aliases: chead
