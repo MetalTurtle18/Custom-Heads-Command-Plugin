@@ -25,7 +25,6 @@ public class CustomHeadsCommand extends JavaPlugin {
         paymentAmount = config.getInt("amount");
         getCommand("customhead").setExecutor(new Commands());
         server.getConsoleSender().sendMessage(ChatColor.GREEN + "Custom Heads Command Plugin Loaded!");
-        server.getConsoleSender().sendMessage(ChatColor.BLUE + "The set payment amount is " + paymentAmount);
     }
 
     @Override

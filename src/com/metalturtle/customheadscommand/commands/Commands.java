@@ -20,10 +20,11 @@ public class Commands implements CommandExecutor {
             ItemStack payment = new ItemStack(CustomHeadsCommand.paymentItem);
             if (player.getInventory().containsAtLeast(payment, CustomHeadsCommand.paymentAmount)) {
                 player.sendMessage("You have the payment");
+                return true;
             }
+            player.sendMessage("You do not have the payment");
             return true;
         }
-        player.sendMessage("You do not have the payment");
         return true;
     }
 }
