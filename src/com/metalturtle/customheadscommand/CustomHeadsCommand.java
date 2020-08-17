@@ -12,6 +12,7 @@ public class CustomHeadsCommand extends JavaPlugin {
     FileConfiguration config = this.getConfig();
     public static Material paymentItem;
     public static int paymentAmount;
+    public static String paymentItemString;
     public Server server = getServer();
 
     @Override
@@ -22,6 +23,7 @@ public class CustomHeadsCommand extends JavaPlugin {
         saveConfig();
         paymentItem = Material.valueOf(config.getString("payment").toUpperCase());
         paymentAmount = config.getInt("amount");
+        paymentItemString = config.getString("payment");
         getCommand("customhead").setExecutor(new Commands());
         server.getConsoleSender().sendMessage(ChatColor.GREEN + "Custom Heads Command Plugin Loaded!");
     }

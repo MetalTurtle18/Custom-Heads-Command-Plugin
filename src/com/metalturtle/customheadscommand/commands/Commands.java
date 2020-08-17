@@ -17,19 +17,27 @@ public class Commands implements CommandExecutor {
             return true;
         }
         Player player = (Player) commandSender;
-
+        // Check for command
         if (command.getName().equalsIgnoreCase("customhead")) {
+            // If there was no player name specified the command will not try to run (and fail)
+            if (args.length != 1) {
+                player.sendMessage(ChatColor.RED + "You need to specify a player name to get their head!");
+                return true;
+            }
+            // Get the item set in the config file
             ItemStack payment = new ItemStack(CustomHeadsCommand.paymentItem);
+            // Check player's inventory for the payment
             if (player.getInventory().containsAtLeast(payment, CustomHeadsCommand.paymentAmount)) {
-                player.sendMessage(ChatColor.GREEN + "You paid " + CustomHeadsCommand.paymentAmount + " X " + payment + " for the head named" + args[0]);
+                player.sendMessage(ChatColor.GREEN + "You paid " + CustomHeadsCommand.paymentAmount + " x " + CustomHeadsCommand.paymentItemString + " for the head named " + args[0]);
                 giveHead(player, args[0]);
                 return true;
             }
-            player.sendMessage(ChatColor.RED + "You do not have sufficient payment. The set payment for this command is " + CustomHeadsCommand.paymentAmount + " X " + payment + ".");
+            player.sendMessage(ChatColor.RED + "You do not have sufficient payment. The set payment for this command is " + CustomHeadsCommand.paymentAmount + " x " + CustomHeadsCommand.paymentItemString + ".");
             return true;
         }
         return true;
     }
+    // Method to give the player head to the player
     private void giveHead(Player player, String headName) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         //head.setData();
