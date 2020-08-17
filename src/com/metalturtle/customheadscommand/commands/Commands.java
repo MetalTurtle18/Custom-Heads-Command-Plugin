@@ -21,8 +21,6 @@ public class Commands implements CommandExecutor {
             return true;
         }
         Player player = (Player) commandSender;
-        // Check for command
-        //if (command.getName().equalsIgnoreCase("customhead")) {
             // If there was no player name specified the command will not try to run (and fail)
             if (args.length != 1) {
                 player.sendMessage(ChatColor.RED + "You need to specify a player name to get their head!");
@@ -47,8 +45,6 @@ public class Commands implements CommandExecutor {
             }
             player.sendMessage(ChatColor.RED + "Insufficient funds. The set payment for this command is " + CustomHeadsCommand.paymentAmount + " x " + CustomHeadsCommand.paymentItemString + ".");
             return true;
-        //}
-        //return true;
     }
     // Method to give the player head to the player
     private void giveHead(Player player, String headName) {
