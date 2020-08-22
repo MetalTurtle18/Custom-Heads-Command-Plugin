@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+
 public class Commands implements CommandExecutor {
 
     @Override
@@ -23,7 +24,7 @@ public class Commands implements CommandExecutor {
         Player player = (Player) commandSender;
             // If there was no player name specified the command will not try to run (and fail)
             if (args.length != 1) {
-                player.sendMessage(ChatColor.RED + "You need to specify a player name to get their head!");
+                player.sendMessage(ChatColor.RED + CustomHeadsCommand.noNameSpecified);
                 return true;
             }
             // Get the item set in the config file
@@ -33,17 +34,17 @@ public class Commands implements CommandExecutor {
             // If the player is in creative mode they do not need to pay
             if (player.getGameMode() == GameMode.CREATIVE || paymentAmount <= 0) {
                 giveHead(player, args[0]);
-                player.sendMessage(ChatColor.GREEN + "You got the head named " + args[0]);
+                player.sendMessage(ChatColor.GREEN + CustomHeadsCommand.replacePlaceholders(CustomHeadsCommand.headGivenFree, "%head_name%", args[0]));
                 return true;
             }
             // Check player's inventory for the payment
             if (player.getInventory().containsAtLeast(payment, paymentAmount)) {
-                player.sendMessage(ChatColor.GREEN + "You paid " + paymentAmount + " x " + CustomHeadsCommand.paymentItemString + " for the head named " + args[0]);
+                player.sendMessage(ChatColor.GREEN + CustomHeadsCommand.replacePlaceholders(CustomHeadsCommand.headGivenPaid, "%head_name%", args[0]));
                 giveHead(player, args[0]);
                 player.getInventory().removeItem(fullPayment);
                 return true;
             }
-            player.sendMessage(ChatColor.RED + "Insufficient funds. The set payment for this command is " + CustomHeadsCommand.paymentAmount + " x " + CustomHeadsCommand.paymentItemString + ".");
+            player.sendMessage(ChatColor.RED + CustomHeadsCommand.replacePlaceholders(CustomHeadsCommand.noFunds, "%head_name%", args[0]));
             return true;
     }
     // Method to give the player head to the player
@@ -54,6 +55,5 @@ public class Commands implements CommandExecutor {
         meta.setOwningPlayer(playerName);
         head.setItemMeta(meta);
         player.getInventory().addItem(head);
-
     }
 }
