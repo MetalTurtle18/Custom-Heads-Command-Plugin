@@ -1,0 +1,12 @@
+name: CustomHeadsCommand
+version: 2.0.0
+author: MetalTurtle
+main: io.github.metalturtle18.customheadscommandplugin.CustomHeadsCommand
+api-version: 1.17
+commands:
+  customhead:
+    description: A command to get a custom player head at the cost of the configured payment
+    usage: /<command> <player name>
+    aliases: [head, ch]
+libraries:
+  - "net.axay:kspigot:1.17.2"

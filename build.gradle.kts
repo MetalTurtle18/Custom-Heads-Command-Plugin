@@ -9,16 +9,14 @@ version = "2.0.0"
 
 repositories {
     mavenCentral()
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    compileOnly("org.spigotmc:spigot-api:1.17-R0.1-SNAPSHOT")
+    implementation("net.axay:kspigot:1.17.2")
 }
 
-tasks.test {
-    useJUnit()
-}
-
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "16"
 }
